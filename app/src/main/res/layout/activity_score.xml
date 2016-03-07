@@ -1,24 +1,63 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:background="@color/gameColor"
+                    tools:context=".MainActivity" >
+
+        <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+                       android:id="@+id/titleLinearLayout"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+            <TextView
+                android:id="@+id/rankScoreTitleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity" >
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size"
+                android:text="@string/score_rankTitle"/>
+            <TextView
+                android:id="@+id/nameScoreTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size"
+                android:text="@string/score_nameTitle"/>
+            <TextView
+                android:id="@+id/totalScoreTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size"
+                android:text="@string/score_total"/>
+        </LinearLayout>
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/mainText"
-    android:text="@string/score_list" />
-
-<ListView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/mainText"
-    android:id="@+id/scoreListView"
-    android:background="#aaaaaa" />
-
-</RelativeLayout>
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleLinearLayout"
+            android:id="@+id/scoreListView"
+            android:background="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"/>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

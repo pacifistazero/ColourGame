@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logo);
+
         starterIntent = getIntent();
 
         handler = new UpdateCardsHandler();
@@ -87,8 +91,7 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_restart:
-                /*Clean it up first*/
-                cleanUp();
+                recreate();
                 return true;
             case R.id.action_score:
                 Intent k = new Intent(this, ScoreActivity.class);
@@ -176,22 +179,6 @@ public class MainActivity extends AppCompatActivity {
         button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
         button.setOnClickListener(buttonListener);
         return button;
-    }
-
-    private void cleanUp(){
-        if(images != null && images.size() != 0 ){
-            images.clear();
-            images = null;
-        }
-
-        if(cards != null && cards.length != 0){
-            cards = null;
-        }
-
-        finish();
-        startActivity(starterIntent);
-
-        newGame(4,4);
     }
 
     class ButtonListener implements View.OnClickListener {
@@ -298,6 +285,8 @@ public class MainActivity extends AppCompatActivity {
                 firstCard.button.setBackgroundDrawable(backImage);
 
                 numberOfFailed+=1;
+                score -= 100;
+                matchTextView.setText("SCORE : " + score);
                 numberOfTryTextView.setText("TRY : " + (MAXTRY - numberOfFailed));
                 if(numberOfFailed == MAXTRY){
                     // set title
@@ -312,6 +301,7 @@ public class MainActivity extends AppCompatActivity {
                                     Random r = new Random();
                                     // Store it into database
                                     db.addScore(new ScoreDataContract(r.nextInt(), inputName.getText().toString(), score));
+                                    recreate();
                                 }
                             })
                             .setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -8,5 +8,7 @@
     <string name="name_textView">NAME</string>
     <string name="score_textView">SCORE</string>
     <string name="score_list">Score List</string>
-
+    <string name="score_rankTitle">RANK</string>
+    <string name="score_nameTitle">NAME</string>
+    <string name="score_total">SCORE</string>
 </resources>
